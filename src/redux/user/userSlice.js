@@ -12,8 +12,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setActiveUser: (state, action) => {
-      state.userName = action.payload.userName;
-      state.userEmail = action.payload.userEmail;
+      state.userName = action.payload.name;
+      state.userEmail = action.payload.email;
     },
     setUserLogOutState: (state) => {
       state.userName = null;

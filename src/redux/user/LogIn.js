@@ -34,7 +34,7 @@ export const LogIn = () => {
       })
       .catch((err) => console.log(err));
   };
-
+  
   return (
     <div>
       <h1>Signup</h1>
