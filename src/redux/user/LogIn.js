@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../firebase-config";
+import React, { useState } from "react";
+import { signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, providerGoogle, providerEmail } from "../../firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,15 +15,30 @@ export const LogIn = () => {
   const userName = useSelector(selectUserName);
   const userEmail = useSelector(selectUserEmail);
 
-  const handleSignIn = () => {
-    signInWithPopup(auth, provider).then((result) => {
-      dispatch(
-        setActiveUser({
-          name: result.user.displayName,
-          email: result.user.email,
-        })
-      );
-    });
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, providerGoogle)
+      .then((result) => {
+        dispatch(
+          setActiveUser({
+            name: result.user.displayName,
+            email: result.user.email,
+          })
+        );
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const signUpWithEmail = () => {
+    createUserWithEmailAndPassword(auth, inputs.email, inputs.password)
+      .then((result) => {
+        dispatch(
+          setActiveUser({
+            // name: result.user.displayName,
+            email: result.user.email,
+          })
+        );
+      })
+      .catch((e) => console.log(e));
   };
 
   const handleSignOut = () => {
@@ -34,15 +49,42 @@ export const LogIn = () => {
       })
       .catch((err) => console.log(err));
   };
-  
+  const [inputs, setInputValue] = useState({ email: "", password: "" });
+
   return (
     <div>
       <h1>Signup</h1>
-      {userName ? (
-        <button onClick={handleSignOut}>Sign OUT</button>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        onChange={({ target }) =>
+          setInputValue((state) => ({ ...state, email: target.value }))
+        }
+        value={inputs.email}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        onChange={({ target }) =>
+          setInputValue((state) => ({ ...state, password: target.value }))
+        }
+        value={inputs.password}
+      />
+      <div>
+        {userName ? (
+          <button onClick={handleSignOut}>Sign OUT</button>
         ) : (
-        <button onClick={handleSignIn}>Sign In</button>
-      )}
+          <button onClick={signInWithGoogle}>Sign In with Google</button>
+        )}
+        {userName ? (
+          <button onClick={handleSignOut}>Sign OUT</button>
+        ) : (
+          <button onClick={signUpWithEmail}>Sign Up with Email</button>
+        )}
+        <button onClick={() => console.log(inputs)}>click</button>
+      </div>
     </div>
   );
 };
