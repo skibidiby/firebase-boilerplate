@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth, providerGoogle, providerEmail } from "../../firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +34,19 @@ export const LogIn = () => {
 
   const signUpWithEmail = () => {
     createUserWithEmailAndPassword(auth, inputs.email, inputs.password)
+      .then((result) => {
+        dispatch(
+          setActiveUser({
+            // name: result.user.displayName,
+            email: result.user.email,
+          })
+        );
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const logInWithEmail = () => {
+    signInWithEmailAndPassword(auth, inputs.email, inputs.password)
       .then((result) => {
         dispatch(
           setActiveUser({
@@ -73,17 +90,17 @@ export const LogIn = () => {
         value={inputs.password}
       />
       <div>
-        {userName ? (
+        {userEmail ? (
           <button onClick={handleSignOut}>Sign OUT</button>
         ) : (
           <button onClick={signInWithGoogle}>Sign In with Google</button>
         )}
-        {userName ? (
+        {userEmail ? (
           <button onClick={handleSignOut}>Sign OUT</button>
         ) : (
           <button onClick={signUpWithEmail}>Sign Up with Email</button>
         )}
-        <button onClick={() => console.log(inputs)}>click</button>
+        <button onClick={logInWithEmail}>LogIn</button>
       </div>
     </div>
   );
