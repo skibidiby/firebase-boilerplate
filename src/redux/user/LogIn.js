@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth, providerGoogle, providerEmail } from "../../firebase-config";
+import { auth, providerGoogle } from "../../firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,7 +16,7 @@ import {
 
 export const LogIn = () => {
   const dispatch = useDispatch();
-  const userName = useSelector(selectUserName);
+  // const userName = useSelector(selectUserName);
   const userEmail = useSelector(selectUserEmail);
 
   const signInWithGoogle = () => {
