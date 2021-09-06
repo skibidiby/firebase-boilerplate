@@ -1,7 +1,7 @@
 import React from "react";
 import Routes from "./utilities/Routes";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import dotenv from "dotenv";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase-config";

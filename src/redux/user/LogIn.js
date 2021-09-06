@@ -11,7 +11,6 @@ import {
   setActiveUser,
   setUserLogOutState,
   selectUserEmail,
-  selectUserName,
 } from "./userSlice";
 
 export const LogIn = () => {
