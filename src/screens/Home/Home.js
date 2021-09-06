@@ -1,10 +1,13 @@
 import React from "react";
-import "./styles.css";
+import "./styles.scss";
 
 export default function Home() {
   return (
-    <>
-      <h1>HOME</h1>
-    </>
+    <div className="home">
+      <div className="content">
+        <h1>Very cool and awesome headline!</h1>
+        <button className="btn">Lesss goo</button>
+      </div>
+    </div>
   );
 }

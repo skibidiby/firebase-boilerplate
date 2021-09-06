@@ -7,6 +7,9 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <div className="menu">
+        <div className="logo">
+          <h2>Logo</h2>
+        </div>
         <div className="links row">
           <Link to="/">
             <h2>Home</h2>

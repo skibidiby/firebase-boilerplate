@@ -1,9 +1,23 @@
-.menu{
-    width: 100%;
-    .links{
-        justify-content: flex-end;
-        a{
-            margin-right: 10px;
-        }
+@import "variables.scss";
+
+.menu {
+  width: 100%;
+  .logo {
+    max-width: fit-content;
+    float: left;
+    margin-left: 10px;
+    color: $secondary-1-0;
+  }
+  .links {
+    float: right;
+    justify-content: flex-end;
+    a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: $primary-0;
+      :hover {
+        color: $secondary-2-0;
+      }
     }
+  }
 }
