@@ -12,7 +12,7 @@ import {
   setUserLogOutState,
   selectUserEmail,
 } from "./userSlice";
-
+import './styles.scss'
 export const LogIn = () => {
   const dispatch = useDispatch();
   // const userName = useSelector(selectUserName);
@@ -68,38 +68,40 @@ export const LogIn = () => {
   const [inputs, setInputValue] = useState({ email: "", password: "" });
 
   return (
-    <div>
+    <div className="login centered-screen">
+      <div className="content">
       <h1>Signup</h1>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        onChange={({ target }) =>
-          setInputValue((state) => ({ ...state, email: target.value }))
-        }
-        value={inputs.email}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        onChange={({ target }) =>
-          setInputValue((state) => ({ ...state, password: target.value }))
-        }
-        value={inputs.password}
-      />
-      <div>
-        {userEmail ? (
-          <button onClick={handleSignOut}>Sign OUT</button>
-        ) : (
-          <button onClick={signInWithGoogle}>Sign In with Google</button>
-        )}
-        {userEmail ? (
-          <button onClick={handleSignOut}>Sign OUT</button>
-        ) : (
-          <button onClick={signUpWithEmail}>Sign Up with Email</button>
-        )}
-        <button onClick={logInWithEmail}>LogIn</button>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={({ target }) =>
+            setInputValue((state) => ({ ...state, email: target.value }))
+          }
+          value={inputs.email}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={({ target }) =>
+            setInputValue((state) => ({ ...state, password: target.value }))
+          }
+          value={inputs.password}
+        />
+        <div>
+          {userEmail ? (
+            <button onClick={handleSignOut}>Sign OUT</button>
+          ) : (
+            <button onClick={signInWithGoogle}>Sign In with Google</button>
+          )}
+          {userEmail ? (
+            <button onClick={handleSignOut}>Sign OUT</button>
+          ) : (
+            <button onClick={signUpWithEmail}>Sign Up with Email</button>
+          )}
+          <button onClick={logInWithEmail}>LogIn</button>
+        </div>
       </div>
     </div>
   );

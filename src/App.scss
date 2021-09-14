@@ -32,3 +32,38 @@ body,
   display: flex;
   flex-direction: column;
 }
+.bttn {
+  height: 40px;
+  width: 100px;
+  border-radius: 12px;
+  margin: 5px;
+  border: 1px solid $primary-1;
+  color: $primary-1;
+  background-color: white;
+}
+.bttn:hover {
+  background-color: $primary-1;
+  color: white;
+}
+.bttn-red {
+  height: 40px;
+  width: 100px;
+  border-radius: 12px;
+  margin: 5px;
+  border: 1px solid $secondary-2-0;
+  color: $secondary-2-0;
+  background-color: white;
+}
+.bttn-red:hover {
+  background-color: $secondary-2-0;
+  color: white;
+}
+.input {
+  height: 40px;
+  width: 200px;
+  border: 1px solid $primary-1;
+  border-radius: 12px;
+}
+.input:focus{
+  outline: none;
+}

@@ -1,0 +1,17 @@
+@import "variables.scss";
+
+.centered-screen{
+    display:flex;
+    width:100%;
+    height:100%;
+    justify-content:center;
+    align-items:center;
+    h1{
+        color: $primary-0;
+    }
+    .content{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+}

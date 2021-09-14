@@ -16,7 +16,7 @@ function App() {
       console.log(result);
       dispatch(
         setActiveUser({
-          // name: result.user.displayName,
+          name: result.displayName,
           email: result.email,
         })
       );
